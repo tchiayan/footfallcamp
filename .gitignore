@@ -1,10 +1,8 @@
-/data
 
 # credential
 .env
 
-# local training artifact
-/runs*
-
 # misc
 .DS_Store
+/data
+/runs

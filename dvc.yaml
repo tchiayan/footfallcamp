@@ -1,0 +1,22 @@
+stages:
+  data_preparation:
+    cmd: python src/datasets.py
+    deps:
+    - src/datasets.py
+    params:
+    - project
+    - version
+    - workspace
+    outs:
+    - ./data
+  semi_supervise:
+    cmd: python src/semi_supervision.py
+    deps:
+    - ./data
+    - src/semi_supervision.py
+    params:
+    - project
+    - version
+    - workspace
+    outs:
+    - runs
