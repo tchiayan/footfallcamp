@@ -1,3 +1,4 @@
 workspace: pineapplesizing
 project: footballcam-u6ck2
-version: 4
+version: 5
+epochs: 50

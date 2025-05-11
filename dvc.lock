@@ -10,34 +10,34 @@ stages:
     params:
       params.yaml:
         project: footballcam-u6ck2
-        version: 4
+        version: 5
         workspace: pineapplesizing
     outs:
     - path: ./data
       hash: md5
-      md5: 173179f3088676140e41aee5ed8df6e2.dir
-      size: 3290079
-      nfiles: 93
+      md5: 193486abcfa249e3ae6b5aeea4d127fe.dir
+      size: 4780830
+      nfiles: 133
   semi_supervise:
     cmd: python src/semi_supervision.py
     deps:
     - path: ./data
       hash: md5
-      md5: 824ed907c9a3d9d09f44db00b96e8770.dir
-      size: 3316332
-      nfiles: 95
+      md5: 6383c2563d053a1e883de10225eb433e.dir
+      size: 4817244
+      nfiles: 135
     - path: src/semi_supervision.py
       hash: md5
-      md5: 22acb44ef9f2d851f0528480e9f1287c
-      size: 1614
+      md5: 3f9d798be715e7f258be9a85b6bd6523
+      size: 2038
     params:
       params.yaml:
         project: footballcam-u6ck2
-        version: 4
+        version: 5
         workspace: pineapplesizing
     outs:
     - path: runs
       hash: md5
-      md5: 2a0f3fbcc8a99a37eec5f50ccedd5092.dir
-      size: 94732718
+      md5: 839c5b6a1566972ad44fc844badcea6d.dir
+      size: 95169308
       nfiles: 24

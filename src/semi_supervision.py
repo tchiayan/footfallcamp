@@ -18,10 +18,13 @@ settings.update({
     "mlflow": True,
 })
 
-def model_training()->None:
+def model_training(epochs:int=10)->None:
     """
     Train the semi-supervised YOLOv8 model on staff and non-staff images.
     
+    Args:
+        epochs (int): The number of epochs to train the model. Default is 10.
+        
     Returns:
         None
     """
@@ -34,26 +37,23 @@ def model_training()->None:
     # Train the model on a custom dataset
     model.train(
         data="./data/data.yaml", 
-        epochs=20,
+        epochs=epochs,
         imgsz=640
     )
 
 
-def upload_model()->None:
+def upload_model(workspace:str, project:str, version:int)->None:
     """
     Upload the trained model to Roboflow.
     
+    Args:
+        workspace (str): The name of the Roboflow workspace.
+        project (str): The name of the Roboflow project.
+        version (int): The version of the dataset to upload the model to.
+
     Returns:
         None
     """
-    # load configuration file 
-    with open("params.yaml", "r") as f:
-        config = yaml.safe_load(f)
-    
-    workspace = config['workspace']
-    project = config['project']
-    version = config['version']
-    
     # Initialize Roboflow
     rf = Roboflow(api_key=os.getenv("ROBOFLOW_API_KEY"))
     project = rf.workspace(workspace).project(project)
@@ -65,8 +65,17 @@ def upload_model()->None:
                    filename="best.pt")
         
 if __name__ == "__main__": 
+    # load configuration file 
+    with open("params.yaml", "r") as f:
+        config = yaml.safe_load(f)
+        
+    workspace = config['workspace']
+    project = config['project']
+    version = config['version']
+    epochs = config['epochs']
+    
     # Train the model
-    model_training()
+    model_training(epochs)
     
     # Upload the model to Roboflow
-    upload_model()
+    upload_model(workspace, project, version)
