@@ -70,6 +70,26 @@ ROBOFLOW_API_KEY=<CREDENTIAL>
    dvc pull
    ```
 
+## Workflow
+1. Step annotion: Use roboflow to annotate the image. In this demo, I annotated 
+non-staff as well. `Roboflow` can easily filter out the unwanted class or create null
+object frame (to improve the false positive rate). 
+2. Once annotated, create the dataset with augmentation steps (Blurness, contrast, 
+rotation, skewness, etc), which can also be tuned for better model performance. 
+3. Update the `version` in `params.yaml` according to which dataset version that you 
+want to train. 
+4. Run the DVC pipeline using this command: `dvc repro`. In this demo, I'm only 
+including `epochs` hyperparameters for tuning. For real project, it can be advance 
+tuning strategy such as bayesian optimization, successive halving, hyperband etc. The
+model experiments will be tracked in `Dagshub MLFLOW`
+5. Repeat the step 1 until step 5 to improve the model, data quality. 
+
+## Drawback
+In this demo, it can't really represent the real case as there are limited sample 
+for staff  (black t-shirt with staff logo, white t-shirt with staff logo, walking
+back and forth in repeated direction, while other non-staff mostly static at a 
+location). The model might be overfitted to this scenario only. 
+
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the 
 [LICENSE](LICENSE) file for details.
