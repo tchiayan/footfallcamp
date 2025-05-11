@@ -35,14 +35,40 @@ The following is the main project structure.
 ├── src/                # Source code
 │   └── semi_supervision.py  # Semi-supervised learning for data labeling
 ├── yolov8s.pt          # YOLOv8 small pre-trained model
+├── dvc.yaml            # DVC pipeline
+├── params.yaml         # Parameters / Hyperparameters Configuration
 └── requirements.txt    # Project dependencies
 ```
 
 ## Getting Started
 
 ### Prerequisites
-- Python 3.8 or higher
+- Python 3.11 or higher
 - Required packages: Install with `pip install -r requirements.txt`
+- Add required environment variables as follow: 
+```shell
+MLFLOW_TRACKING_URI=<URL>
+MLFLOW_EXPERIMENT_NAME=<STRING>
+MLFLOW_TRACKING_USERNAME=<STRING>
+MLFLOW_TRACKING_PASSWORD=<CREDENTIAL>
+ROBOFLOW_API_KEY=<CREDENTIAL>
+```
+
+## Steps
+1. Clone this repository
+2. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Update DVC credential using following command: 
+   ```
+   dvc remote modify origin --local access_key_id <ACCESS_KEY_ID>
+   dvc remote modify origin --local secret_access_key <SECRET_ACCESS_KEY>
+   ```
+4. Pull data using DVC: (optional)
+   ```
+   dvc pull
+   ```
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the 

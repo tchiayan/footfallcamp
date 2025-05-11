@@ -1,9 +1,15 @@
 """
 Download and prepare datasets for training and evaluation.
 """
-import os 
+import os
+import shutil 
 import subprocess
 import yaml
+
+from roboflow import Roboflow
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def download_dataset(workspace: str, project: str, version: int)-> None:
     """
@@ -22,13 +28,16 @@ def download_dataset(workspace: str, project: str, version: int)-> None:
         os.makedirs("data", exist_ok=True)
         
     # Empty the dataset directory if it exists
-    os.system("rm -rf data/*")
+    shutil.rmtree("data", ignore_errors=True)
     
     # Download the dataset from Roboflow
-    subprocess.run([
-        "roboflow", "download", "-f", "yolov8", "-l", "data", 
-        f"{workspace}/{project}/{version}"    
-    ], check=True)
+    rf = Roboflow(api_key=os.getenv("ROBOFLOW_API_KEY"))
+    project = rf.workspace(workspace).project(project)
+    version = project.version(version)
+    version.download(
+        model_format="yolov8",
+        location="./data"
+    )
 
 if __name__ == "__main__":
     # Load yaml file 
