@@ -61,7 +61,7 @@ def upload_model()->None:
     
     # Upload the model to Roboflow
     version.deploy(model_type="yolov8",
-                   model_path="runs/detect/train/weight",
+                   model_path="runs/detect/train/weights",
                    filename="best.pt")
         
 if __name__ == "__main__": 
