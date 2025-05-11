@@ -10,21 +10,21 @@ stages:
     params:
       params.yaml:
         project: footfallcamp
-        version: 7
+        version: 9
         workspace: demo-tym7c
     outs:
     - path: ./data
       hash: md5
-      md5: 8396e0dbf5b6e543dfad74e5cedf886b.dir
-      size: 7228974
+      md5: 4201c140988c6c7a25adf57f0b108c89.dir
+      size: 7247772
       nfiles: 201
   semi_supervise:
     cmd: python src/semi_supervision.py
     deps:
     - path: ./data
       hash: md5
-      md5: eb3ee027282f210a13e22b1e3c048922.dir
-      size: 7251106
+      md5: 6da9d00c2fa7c6d421f77c9f023f234e.dir
+      size: 7269904
       nfiles: 203
     - path: src/semi_supervision.py
       hash: md5
@@ -33,11 +33,11 @@ stages:
     params:
       params.yaml:
         project: footfallcamp
-        version: 7
+        version: 9
         workspace: demo-tym7c
     outs:
     - path: runs
       hash: md5
-      md5: 188fea99dbbbde0bc2984548d0a23b9b.dir
-      size: 94746922
+      md5: 0be984b328af53da1f3690eed46facab.dir
+      size: 94739260
       nfiles: 24
