@@ -32,7 +32,7 @@ def model_training(epochs:int=10)->None:
     shutil.rmtree("runs", ignore_errors=True)
     
     # Load pretrained YOLOv8 model
-    model = YOLO("YOLOv8s.pt")
+    model = YOLO("yolov8s.pt")
 
     # Train the model on a custom dataset
     model.train(

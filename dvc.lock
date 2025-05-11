@@ -5,39 +5,39 @@ stages:
     deps:
     - path: src/datasets.py
       hash: md5
-      md5: 29fd45fc28dd449628b4ccf5437a0322
-      size: 1093
+      md5: 4ca58451383fa81af64cc9b243198c5d
+      size: 1285
     params:
       params.yaml:
-        project: footballcam-u6ck2
-        version: 5
-        workspace: pineapplesizing
+        project: footfallcamp
+        version: 6
+        workspace: demo-tym7c
     outs:
     - path: ./data
       hash: md5
-      md5: 193486abcfa249e3ae6b5aeea4d127fe.dir
-      size: 4780830
-      nfiles: 133
+      md5: 0c8023253db767af812627eb9439c0ce.dir
+      size: 7295236
+      nfiles: 201
   semi_supervise:
     cmd: python src/semi_supervision.py
     deps:
     - path: ./data
       hash: md5
-      md5: 6383c2563d053a1e883de10225eb433e.dir
-      size: 4817244
-      nfiles: 135
+      md5: 09f2688cddde0614d9084b54c98107a2.dir
+      size: 7349786
+      nfiles: 203
     - path: src/semi_supervision.py
       hash: md5
-      md5: 3f9d798be715e7f258be9a85b6bd6523
+      md5: 12a2d676dd858f0ecdd1bc7fd38fccb7
       size: 2038
     params:
       params.yaml:
-        project: footballcam-u6ck2
-        version: 5
-        workspace: pineapplesizing
+        project: footfallcamp
+        version: 6
+        workspace: demo-tym7c
     outs:
     - path: runs
       hash: md5
-      md5: 839c5b6a1566972ad44fc844badcea6d.dir
-      size: 95169308
+      md5: 2749818ce806c05db87d8afa01785d51.dir
+      size: 95868852
       nfiles: 24
